@@ -39,7 +39,12 @@ async function requestThirdPartyAPI(url) {
     if (url === undefined || url === "") {
       throw new Error("No URL was provided");
     }
-    const response = await axios.get(url);
+
+    const options = {
+      validateStatus: (status) => status < 500,
+    };
+    const response = await axios.get(url, options);
+
     return response.data;
   } catch (err) {
     return { message: "FAILED", description: err };
