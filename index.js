@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const { redisConnect, redisSet, redisGet } = require("./models/cache.js");
+const { redisConnect } = require("./models/cache.js");
 const weatherRouter = require("./routes/weather_route.js");
 const app = express();
 

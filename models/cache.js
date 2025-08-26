@@ -7,7 +7,7 @@ async function redisConnect() {
   const redisPort = process.env.REDIS_PORT || 6379;
   redisClient = await redis
     .createClient(redisPort, redisHost)
-    .on("connect", () => console.log("Redis connected."))
+    .on("connect", () => console.log("Redis connected"))
     .on("error", (err) => console.log(`Redis threw an error: ${err}`))
     .connect();
 }
@@ -17,16 +17,14 @@ async function redisSet(key, value, expiration = 0) {
     console.log(
       `REFUSED to set (${key}/${value}) pair in redis because an expiration was not provided`
     );
-    return false;
+    return;
   }
 
   try {
     await redisClient.set(key, value, { EX: expiration });
-    return true;
   } catch (err) {
     console.log(`An error occurred while setting (${key}/${value}) in redis:`);
     console.log(err);
-    return false;
   }
 }
 
