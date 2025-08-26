@@ -13,11 +13,32 @@ async function redisConnect() {
 }
 
 async function redisSet(key, value, expiration = 0) {
-  await redisClient.set(key, value, { EX: expiration });
+  if (expiration <= 0) {
+    console.log(
+      `REFUSED to set (${key}/${value}) pair in redis because an expiration was not provided`
+    );
+    return false;
+  }
+
+  try {
+    await redisClient.set(key, value, { EX: expiration });
+    return true;
+  } catch (err) {
+    console.log(`An error occurred while setting (${key}/${value}) in redis:`);
+    console.log(err);
+    return false;
+  }
 }
 
 async function redisGet(key) {
-  return await redisClient.get(key);
+  try {
+    const value = await redisClient.get(key);
+    return value;
+  } catch (err) {
+    console.log(`An error occurred while getting (${key}) in redis:`);
+    console.log(err);
+    return false;
+  }
 }
 
 module.exports = {
