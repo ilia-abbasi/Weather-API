@@ -1,15 +1,14 @@
+const express = require("express");
 const dotenv = require("dotenv");
 const { redisConnect, redisSet, redisGet } = require("./cache.js");
+const app = express();
 
-async function main() {
-  dotenv.config();
-  await redisConnect();
-//   await redisSet("um", "excuseMeWhatTheActualFuck", 2);
-//   console.log(await redisGet("um"));
-}
+dotenv.config();
 
-try {
-  main();
-} catch (err) {
-  console.log(`An error occurred while running the program:\n${err}`);
-}
+const port = process.env.PORT || 5000;
+
+redisConnect();
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
