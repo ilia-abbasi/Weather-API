@@ -6,17 +6,18 @@ function send404Error(req, res) {
 }
 
 function send405Error(allowedMethods) {
+  let allowHeaderValue = "";
+
+  for (const allowedMethod of allowedMethods) {
+    allowHeaderValue = `${allowHeaderValue}${allowedMethod}, `;
+  }
+  allowHeaderValue = allowHeaderValue.slice(0, -2);
+
   return (req, res) => {
     const resObj = makeResponseObj(
       false,
       `You can not ${req.method} ${req.baseUrl + req.path}`
     );
-    let allowHeaderValue = "";
-
-    for (const allowedMethod of allowedMethods) {
-      allowHeaderValue = `${allowHeaderValue}${allowedMethod}, `;
-    }
-    allowHeaderValue = allowHeaderValue.slice(0, -2);
 
     res.set("Allow", allowHeaderValue);
     return res.status(405).send(resObj);
