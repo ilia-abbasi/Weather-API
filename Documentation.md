@@ -73,7 +73,7 @@ The only method which can be used for this endpoint is `GET` and anything else w
 
 ## Status codes
 
-Every possible status code recieved from the API is listed in the [Response format](https://github.com/ilia-abbasi/Weather-API/edit/main/README.md#message) section.
+Every possible status code recieved from the API is listed in the [Response format](https://github.com/ilia-abbasi/Weather-API/blob/main/Documentation.md#message) section.
 
 ## Rate limit
 
