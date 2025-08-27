@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const { rateLimit } = require("express-rate-limit");
 const { redisConnect } = require("./models/cache.js");
 const { makeResponseObj } = require("./models/api_response.js");
+const { send404Error } = require("./controllers/response_errors.js");
 const { logger } = require("./middleware/logger.js");
 const weatherRouter = require("./routes/weather_route.js");
 const app = express();
@@ -25,6 +26,8 @@ redisConnect();
 app.use(logger);
 app.use(limiter);
 app.use("/weather", weatherRouter);
+
+app.all("/{*anything}", send404Error);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
