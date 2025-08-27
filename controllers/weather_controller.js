@@ -64,15 +64,6 @@ async function requestThirdPartyAPI(url) {
   }
 }
 
-function send422Response(req, res) {
-  const resObj = makeResponseObj(
-    false,
-    "No city was provided while it is a necessary parameter"
-  );
-  return res.status(422).send(resObj);
-}
-
 module.exports = {
   getWeatherData,
-  send422Response,
 };
