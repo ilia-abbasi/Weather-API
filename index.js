@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const { rateLimit } = require("express-rate-limit");
 const { redisConnect } = require("./models/cache.js");
 const { makeResponseObj } = require("./models/api_response.js");
+const { logger } = require("./middleware/logger.js");
 const weatherRouter = require("./routes/weather_route.js");
 const app = express();
 
@@ -21,6 +22,7 @@ const limiter = rateLimit({
 
 redisConnect();
 
+app.use(logger);
 app.use(limiter);
 app.use("/weather", weatherRouter);
 
