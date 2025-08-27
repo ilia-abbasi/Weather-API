@@ -75,6 +75,14 @@ The only method which can be used for this endpoint is `GET` and anything else w
 
 Every possible status code recieved from the API is listed in the [Response format](https://github.com/ilia-abbasi/Weather-API/blob/main/Documentation.md#message) section.
 
+## Headers
+
+There is only one custom http header used in this API and it's `Retrieval-Method`.  
+If Weather-API retrieves the data by requesting the 3rd party API, the value of this header will be `request`.  
+If Weather-API retrieves the data by using its cache, the value will be `cache`.
+
+This header will only exist if the status code is `200`.
+
 ## Rate limit
 
 The `express-rate-limit` package is used to limit only 60 requests in 10 minutes. If this limit is exceeded, a `429` error will be sent back.
