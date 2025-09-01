@@ -12,7 +12,7 @@ Every response from this API is a JSON object with three properties:
 
 ### Success
 
-This is a boolean indicating wether the request was OK or not. If the API successfully understands the request and responds with the information you want, the value of `success` will be `true`, anything else will make this property to be `false`.  
+This is a boolean indicating whether the request was OK or not. If the API successfully understands the request and responds with the information you want, the value of `success` will be `true`, anything else will make this property to be `false`.  
 Based on the different status codes that Weather-API may use in the response of your request, `true` is for when the status code is `200` and `false` is for when it's anything else.
 
 ### Message
