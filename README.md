@@ -42,6 +42,7 @@ The 3rd party API used in the project: https://goweather.xyz
 - dotenv
 - express
 - express-rate-limit
+- morgan
 - redis
 
 The source code is formatted with [Prettier](https://prettier.io/).
