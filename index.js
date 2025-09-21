@@ -3,8 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const { rateLimit } = require("express-rate-limit");
 const { redisConnect } = require("./models/cache.js");
-const { makeResponseObj } = require("./models/api_response.js");
-const { send404Error } = require("./controllers/response_errors.js");
+const { makeResponseObj, send404Error } = require("./helpers/response.js");
 const weatherRouter = require("./routes/weather_route.js");
 const app = express();
 

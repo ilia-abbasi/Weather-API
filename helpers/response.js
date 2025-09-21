@@ -1,4 +1,6 @@
-const { makeResponseObj } = require("../models/api_response");
+function makeResponseObj(success, message, data = {}) {
+  return { success, message, data };
+}
 
 function send404Error(req, res) {
   const resObj = makeResponseObj(false, "Not found");
@@ -25,6 +27,7 @@ function send405Error(allowedMethods) {
 }
 
 module.exports = {
+  makeResponseObj,
   send404Error,
   send405Error,
 };
