@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { makeResponseObj } = require("../helpers/response.js");
-const { redisGet, redisSet } = require("../models/cache.js");
+const { redisGet, redisSet } = require("../cache/redis.js");
 const thirdPartyAPI = "https://goweather.xyz";
 
 async function getWeatherData(req, res) {
